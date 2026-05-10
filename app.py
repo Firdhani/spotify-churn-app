@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import gzip
 
 # Load aset model
-model = joblib.load('spotify_churn_model.pkl')
+with gzip.open('spotify_churn_model.pkl.gz', 'rb') as f:
+    model = joblib.load(f)
 scaler = joblib.load('spotify_scaler.pkl')
 model_columns = joblib.load('model_columns.pkl')
 
